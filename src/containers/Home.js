@@ -2,12 +2,16 @@ import React from "react";
 import AppCard from "../components/home/AppCard";
 import "typeface-roboto";
 import {ListSubheader, makeStyles, Typography} from "@material-ui/core";
-import {mdiCallMerge, mdiCloudOutline, mdiImageOutline, mdiPhoneLog, mdiPostOutline} from "@mdi/js";
+import {mdiCallMerge, mdiImageOutline, mdiPostOutline} from "@mdi/js";
 
 const useStyles = makeStyles(theme => ({
 	title: {
 		textAlign: 'center',
 		color: theme.palette.primary.main
+	},
+	credit: {
+		textAlign: 'center',
+		justifyContent: 'center'
 	}
 }));
 
@@ -93,6 +97,9 @@ const Home = () => {
 			{cards}
 			<ListSubheader inset>Libraries & Experiments</ListSubheader>
 			{experiments}
+			<div className={classes.credit}>
+				Django Cass © 2019
+			</div>
 		</div>
 	)
 };

@@ -46,7 +46,7 @@ const AppCard = ({name, description, url, icon, fallbackIcon, source, colour}) =
 				</Typography>
 			</CardContent>
 			<CardActions>
-				<Button href={url} style={{color: actualColour}}>Open</Button>
+				{url != null && <Button href={url} style={{color: actualColour}}>Open</Button>}
 				{source != null && <Tooltip title={"View source"}>
 					<IconButton centerRipple={false} href={source}>
 						<Icon path={mdiSourcePull} size={1} color={actualColour}/>
