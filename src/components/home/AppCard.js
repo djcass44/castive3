@@ -1,26 +1,44 @@
-import {Card, CardActions, CardContent, Typography, Button, makeStyles, IconButton, CardMedia} from "@material-ui/core";
+import {Card, CardActions, CardContent, Typography, Button, makeStyles, IconButton, Tooltip} from "@material-ui/core";
 import React from "react";
 import Icon from "@mdi/react";
 import {mdiSourcePull} from "@mdi/js";
+import Avatar from "@material-ui/core/Avatar";
+import {usePalette} from "react-palette";
+import ReactImageFallback from "react-image-fallback";
 
 const useStyles = makeStyles(() => ({
 	card: {
-		borderRadius: 12
+		borderRadius: 12,
+		margin: 16
 	},
-	media: {
-		maxHeight: 128,
-		maxWidth: 128,
-		float: 'left'
+	title: {
+		margin: 4
+	},
+	avatar: {
+		backgroundColor: 'transparent',
+		width: 96,
+		height: 96,
+		float: 'left',
+		margin: 16
 	}
 }));
 
-const AppCard = ({name, description, url, source, colour}) => {
+const AppCard = ({name, description, url, icon, fallbackIcon, source, colour}) => {
+	const {data, loading, error} = usePalette(icon);
+	const actualColour = loading === false && error == null ? data.vibrant : colour;
+
 	const classes = useStyles();
 	return (
 		<Card className={classes.card}>
-			<CardMedia className={classes.media} component={'img'} image={`${url}/favicon.png`} title={`${name} icon`}/>
 			<CardContent>
-				<Typography variant={"h3"}>
+				<Avatar component={'div'} className={classes.avatar}>
+					<ReactImageFallback style={{borderRadius: 64}} src={icon} fallbackImage={
+						<Icon path={fallbackIcon} color={colour} size={'3.5rem'}/>
+					} initialImage={
+						<Icon path={fallbackIcon} color={colour} size={'3.5rem'}/>
+					}/>
+				</Avatar>
+				<Typography variant={"h5"} className={classes.title} style={{color: actualColour}}>
 					{name}
 				</Typography>
 				<Typography>
@@ -28,10 +46,12 @@ const AppCard = ({name, description, url, source, colour}) => {
 				</Typography>
 			</CardContent>
 			<CardActions>
-				<Button href={url} color={"primary"}>Open</Button>
-				{source != null && <IconButton centerRipple={false} href={source}>
-					<Icon path={mdiSourcePull} size={1} color={colour}/>
-				</IconButton>}
+				<Button href={url} style={{color: actualColour}}>Open</Button>
+				{source != null && <Tooltip title={"View source"}>
+					<IconButton centerRipple={false} href={source}>
+						<Icon path={mdiSourcePull} size={1} color={actualColour}/>
+					</IconButton>
+				</Tooltip>}
 			</CardActions>
 		</Card>
 	)
