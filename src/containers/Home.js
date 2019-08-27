@@ -20,7 +20,7 @@ const Home = () => {
 	const apps = [
 		{
 			name: "JMP",
-			description: "Application used for quickly navigating to links/urls",
+			description: "Application used for quickly navigating to links/urls.",
 			url: "https://jmp.castive.dev",
 			icon: "https://icon.jmp.castive.dev/icon?site=https://jmp.castive.dev",
 			fallbackIcon: mdiCallMerge,
@@ -38,7 +38,8 @@ const Home = () => {
 			icon: "https://icon.jmp.castive.dev/icon?site=https://icon.jmp.castive.dev",
 			fallbackIcon: mdiImageOutline,
 			source: "https://github.com/djcass44/fav2",
-			colour: "#DB4437"
+			colour: "#DB4437",
+			app: true
 		},
 		{
 			name: "Log2",
