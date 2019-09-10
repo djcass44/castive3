@@ -8,7 +8,8 @@ const useStyles = makeStyles(theme => ({
 		flex: 1,
 		justifyContent: 'center',
 		alignItems: 'center',
-		padding: 24
+		padding: 24,
+		backgroundColor: theme.palette.background.default
 	},
 	centered: {
 		flex: 1,

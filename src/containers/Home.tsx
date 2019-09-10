@@ -1,11 +1,14 @@
 import React, {useState} from "react";
 import AppCard from "../components/home/AppCard";
 import "typeface-roboto";
-import {Collapse, IconButton, ListSubheader, makeStyles, Typography, useTheme} from "@material-ui/core";
+import {Collapse, IconButton, Link, ListSubheader, makeStyles, Typography, useTheme} from "@material-ui/core";
 import {mdiChevronDown, mdiChevronRight} from "@mdi/js";
 import Icon from "@mdi/react";
 import data from "../data";
 import {Theme} from "../palette";
+import HdrWeak from "@material-ui/icons/HdrWeak";
+import HdrStrong from "@material-ui/icons/HdrStrong";
+import getThemeMode, {LS_DARK} from "../data/getThemeMode";
 
 const useStyles = makeStyles(theme => ({
 	title: {
@@ -22,6 +25,14 @@ export default () => {
 	// hooks
 	const classes = useStyles();
 	const theme = useTheme<Theme>();
+
+	const [dark, setDark] = useState(getThemeMode() === "dark");
+
+	const toggleTheme = () => {
+		localStorage.setItem(LS_DARK, (!dark).toString());
+		setDark(!dark);
+		window.location.reload();
+	};
 
 	const cards = new Array<AppCard>();
 	data.forEach(i => {
@@ -65,12 +76,18 @@ export default () => {
 
 	return (
 		<div>
-			<Typography className={classes.title} variant={"h2"}>
+			<Typography className={classes.title} variant="h2">
 				Castive dot Dev
+			</Typography>
+			<Typography color="secondary" className={classes.credit}>
+				Django Cass © 2019&nbsp;&bull;&nbsp;
+				<IconButton size="small" centerRipple={false} onClick={() => toggleTheme()}>
+					{dark ? <HdrStrong/> : <HdrWeak/>}
+				</IconButton>
 			</Typography>
 			<ListSubheader inset>
 				Apps
-				<IconButton centerRipple={false} size={"small"} onClick={() => setShowApps(!showApps)}>
+				<IconButton centerRipple={false} size="small" onClick={() => setShowApps(!showApps)}>
 					<Icon path={showApps ? mdiChevronDown : mdiChevronRight} size={1}
 					      color={theme.palette.text.secondary}/>
 				</IconButton>
@@ -80,7 +97,7 @@ export default () => {
 			</Collapse>
 			<ListSubheader inset>
 				Libraries &amp; experiments
-				<IconButton centerRipple={false} size={"small"} onClick={() => setShowOther(!showOther)}>
+				<IconButton centerRipple={false} size="small" onClick={() => setShowOther(!showOther)}>
 					<Icon path={showOther ? mdiChevronDown : mdiChevronRight} size={1}
 					      color={theme.palette.text.secondary}/>
 				</IconButton>
@@ -89,7 +106,7 @@ export default () => {
 				{experiments}
 			</Collapse>
 			<div className={classes.credit}>
-				Django Cass © 2019
+				<Link href="https://github.com/djcass44/castive3">View source</Link>
 			</div>
 		</div>
 	)
