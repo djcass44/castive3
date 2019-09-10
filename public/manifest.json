@@ -1,6 +1,6 @@
 {
   "short_name": "Castive",
-  "name": "Create React App Sample",
+	"name": "Castive dot Dev",
   "icons": [
     {
       "src": "favicon.ico",
@@ -20,6 +20,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+	"theme_color": "#4285F4",
+	"background_color": "#fafafa"
 }
