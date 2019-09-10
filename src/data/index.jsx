@@ -28,7 +28,7 @@ export default [
 	{
 		name: "Castive",
 		description: <span>
-			This website! This site was build in ReactJS using a combination of ES6 JavaScript and TypeScript and used the material-ui framework.
+			This website! This site was built in ReactJS using a combination of ES6 JavaScript and TypeScript and used the material-ui framework.
 		</span>,
 		url: "https://castive.dev",
 		icon: "https://icon.jmp.castive.dev/icon?site=castive.dev",
