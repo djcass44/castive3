@@ -1,4 +1,4 @@
-import {mdiCallMerge, mdiImageOutline, mdiLambda, mdiPackageUp, mdiPostOutline} from "@mdi/js";
+import {mdiCallMerge, mdiImageOutline, mdiLambda, mdiPackageUp, mdiPostOutline, mdiProgressWrench} from "@mdi/js";
 import React from "react";
 
 export default [
@@ -23,6 +23,18 @@ export default [
 		fallbackIcon: mdiImageOutline,
 		source: "https://github.com/djcass44/fav2",
 		colour: "#DB4437",
+		app: true
+	},
+	{
+		name: "Castive",
+		description: <span>
+			This website! This site was build in ReactJS using a combination of ES6 JavaScript and TypeScript and used the material-ui framework.
+		</span>,
+		url: "https://castive.dev",
+		icon: "https://icon.jmp.castive.dev/icon?site=https://icon.jmp.castive.dev",
+		fallbackIcon: mdiProgressWrench,
+		source: "https://github.com/djcass44/castive3",
+		colour: "#3F51B5",
 		app: true
 	},
 	{
