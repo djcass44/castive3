@@ -1,8 +1,10 @@
-import React from "react";
+import React, {useState} from "react";
 import AppCard from "../components/home/AppCard";
 import "typeface-roboto";
-import {ListSubheader, makeStyles, Typography} from "@material-ui/core";
-import {mdiCallMerge, mdiImageOutline, mdiPostOutline} from "@mdi/js";
+import {Collapse, IconButton, ListSubheader, makeStyles, Typography, useTheme} from "@material-ui/core";
+import {mdiChevronDown, mdiChevronRight} from "@mdi/js";
+import Icon from "@mdi/react";
+import data from "../data";
 
 const useStyles = makeStyles(theme => ({
 	title: {
@@ -16,45 +18,12 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const Home = () => {
+	// hooks
 	const classes = useStyles();
-	const apps = [
-		{
-			name: "JMP",
-			description: "Application used for quickly navigating to links/urls.",
-			url: "https://jmp.castive.dev",
-			icon: "https://icon.jmp.castive.dev/icon?site=https://jmp.castive.dev",
-			fallbackIcon: mdiCallMerge,
-			source: "https://github.com/djcass44/jmp",
-			colour: "#4285F4",
-			app: true
-		},
-		{
-			name: "Fav2",
-			description: <span>
-				Application for scraping/loading image favicons from websites.<br/><br/>
-				<code>docker run -p 8080:8080 djcass44/fav2:master</code>
-			</span>,
-			url: "https://icon.jmp.castive.dev",
-			icon: "https://icon.jmp.castive.dev/icon?site=https://icon.jmp.castive.dev",
-			fallbackIcon: mdiImageOutline,
-			source: "https://github.com/djcass44/fav2",
-			colour: "#DB4437",
-			app: true
-		},
-		{
-			name: "Log2",
-			description: <span>
-				Kotlin library for simple logging. It allows for you to reduce the setup required for logging.<br/><br/>
-				<code>implementation("com.github.djcass44:log2:3.4")</code>
-			</span>,
-			fallbackIcon: mdiPostOutline,
-			source: "https://github.com/djcass44/log2",
-			colour: "#F4B400"
-		},
-	];
+	const theme = useTheme();
 
 	const cards = [];
-	apps.forEach(i => {
+	data.forEach(i => {
 		if(i.app === true) {
 			cards.push(
 				<AppCard
@@ -72,7 +41,7 @@ const Home = () => {
 		}
 	});
 	const experiments = [];
-	apps.forEach(i => {
+	data.forEach(i => {
 		if(i.app == null || i.app === false) {
 			experiments.push(
 				<AppCard
@@ -89,15 +58,35 @@ const Home = () => {
 			);
 		}
 	});
+
+	const [showApps, setShowApps] = useState(true);
+	const [showOther, setShowOther] = useState(true);
+
 	return (
 		<div>
 			<Typography className={classes.title} variant={"h2"}>
 				Castive dot Dev
 			</Typography>
-			<ListSubheader inset>Apps</ListSubheader>
-			{cards}
-			<ListSubheader inset>Libraries & Experiments</ListSubheader>
-			{experiments}
+			<ListSubheader inset>
+				Apps
+				<IconButton centerRipple={false} size={"small"} onClick={() => setShowApps(!showApps)}>
+					<Icon path={showApps === true ? mdiChevronDown : mdiChevronRight} size={1}
+					      color={theme.palette.text.secondary}/>
+				</IconButton>
+			</ListSubheader>
+			<Collapse in={showApps}>
+				{cards}
+			</Collapse>
+			<ListSubheader inset>
+				Libraries &amp; experiments
+				<IconButton centerRipple={false} size={"small"} onClick={() => setShowOther(!showOther)}>
+					<Icon path={showOther === true ? mdiChevronDown : mdiChevronRight} size={1}
+					      color={theme.palette.text.secondary}/>
+				</IconButton>
+			</ListSubheader>
+			<Collapse in={showOther}>
+				{experiments}
+			</Collapse>
 			<div className={classes.credit}>
 				Django Cass © 2019
 			</div>
