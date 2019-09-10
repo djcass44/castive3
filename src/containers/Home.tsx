@@ -5,6 +5,7 @@ import {Collapse, IconButton, ListSubheader, makeStyles, Typography, useTheme} f
 import {mdiChevronDown, mdiChevronRight} from "@mdi/js";
 import Icon from "@mdi/react";
 import data from "../data";
+import {Theme} from "../palette";
 
 const useStyles = makeStyles(theme => ({
 	title: {
@@ -20,11 +21,11 @@ const useStyles = makeStyles(theme => ({
 export default () => {
 	// hooks
 	const classes = useStyles();
-	const theme = useTheme();
+	const theme = useTheme<Theme>();
 
-	const cards = [];
+	const cards = new Array<AppCard>();
 	data.forEach(i => {
-		if(i.app === true) {
+		if (i.app) {
 			cards.push(
 				<AppCard
 					key={i.name}
@@ -40,9 +41,9 @@ export default () => {
 			);
 		}
 	});
-	const experiments = [];
+	const experiments = new Array<AppCard>();
 	data.forEach(i => {
-		if(i.app == null || i.app === false) {
+		if (i.app == null || !i.app) {
 			experiments.push(
 				<AppCard
 					key={i.name}
@@ -70,7 +71,7 @@ export default () => {
 			<ListSubheader inset>
 				Apps
 				<IconButton centerRipple={false} size={"small"} onClick={() => setShowApps(!showApps)}>
-					<Icon path={showApps === true ? mdiChevronDown : mdiChevronRight} size={1}
+					<Icon path={showApps ? mdiChevronDown : mdiChevronRight} size={1}
 					      color={theme.palette.text.secondary}/>
 				</IconButton>
 			</ListSubheader>
@@ -80,7 +81,7 @@ export default () => {
 			<ListSubheader inset>
 				Libraries &amp; experiments
 				<IconButton centerRipple={false} size={"small"} onClick={() => setShowOther(!showOther)}>
-					<Icon path={showOther === true ? mdiChevronDown : mdiChevronRight} size={1}
+					<Icon path={showOther ? mdiChevronDown : mdiChevronRight} size={1}
 					      color={theme.palette.text.secondary}/>
 				</IconButton>
 			</ListSubheader>

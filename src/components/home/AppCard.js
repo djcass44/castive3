@@ -1,10 +1,11 @@
-import {Card, CardActions, CardContent, Typography, Button, makeStyles, IconButton, Tooltip} from "@material-ui/core";
+import {Button, Card, CardActions, CardContent, IconButton, makeStyles, Tooltip, Typography} from "@material-ui/core";
 import React from "react";
 import Icon from "@mdi/react";
 import {mdiSourcePull} from "@mdi/js";
 import Avatar from "@material-ui/core/Avatar";
 import {usePalette} from "react-palette";
 import ReactImageFallback from "react-image-fallback";
+import PropTypes from "prop-types";
 
 const useStyles = makeStyles(() => ({
 	card: {
@@ -23,7 +24,7 @@ const useStyles = makeStyles(() => ({
 	}
 }));
 
-export default ({name, description, url, icon, fallbackIcon, source, colour}) => {
+const AppCard = ({name, description, url, icon, fallbackIcon, source, colour}) => {
 	const {data, loading, error} = usePalette(icon);
 	const actualColour = loading === false && error == null ? data.vibrant : colour;
 
@@ -56,3 +57,19 @@ export default ({name, description, url, icon, fallbackIcon, source, colour}) =>
 		</Card>
 	)
 };
+AppCard.propTypes = {
+	id: PropTypes.string.isRequired,
+	name: PropTypes.string.isRequired,
+	description: PropTypes.node.isRequired,
+	url: PropTypes.string,
+	icon: PropTypes.string,
+	fallbackIcon: PropTypes.node.isRequired,
+	source: PropTypes.string,
+	colour: PropTypes.string.isRequired
+};
+AppCard.defaultProps = {
+	url: null,
+	icon: "",
+	source: ""
+};
+export default AppCard;
