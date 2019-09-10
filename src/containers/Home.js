@@ -45,7 +45,7 @@ const Home = () => {
 			name: "Log2",
 			description: <span>
 				Kotlin library for simple logging. It allows for you to reduce the setup required for logging.<br/><br/>
-				<code>implementation("dev.castive:log2:SNAPSHOT")</code>
+				<code>implementation("com.github.djcass44:log2:3.4")</code>
 			</span>,
 			fallbackIcon: mdiPostOutline,
 			source: "https://github.com/djcass44/log2",

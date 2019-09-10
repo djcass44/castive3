@@ -23,7 +23,7 @@ const useStyles = makeStyles(() => ({
 	}
 }));
 
-const AppCard = ({name, description, url, icon, fallbackIcon, source, colour}) => {
+export default ({name, description, url, icon, fallbackIcon, source, colour}) => {
 	const {data, loading, error} = usePalette(icon);
 	const actualColour = loading === false && error == null ? data.vibrant : colour;
 
@@ -56,4 +56,3 @@ const AppCard = ({name, description, url, icon, fallbackIcon, source, colour}) =
 		</Card>
 	)
 };
-export default AppCard;
