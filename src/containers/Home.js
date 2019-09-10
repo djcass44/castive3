@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
 	}
 }));
 
-const Home = () => {
+export default () => {
 	// hooks
 	const classes = useStyles();
 	const theme = useTheme();
@@ -93,4 +93,3 @@ const Home = () => {
 		</div>
 	)
 };
-export default Home;

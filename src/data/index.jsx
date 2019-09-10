@@ -28,7 +28,7 @@ export default [
 	{
 		name: "Log2",
 		description: <span>
-				Kotlin library for simple logging. It allows for you to reduce the setup required for logging.<br/><br/>
+				Kotlin library for simple logging. It allows for you to reduce the setup required for logging. <br/>(Should be on Maven Central soon!)<br/><br/>
 				<code>implementation("com.github.djcass44:log2:3.4")</code>
 			</span>,
 		fallbackIcon: mdiPostOutline,

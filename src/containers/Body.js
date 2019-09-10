@@ -1,8 +1,7 @@
 import React from "react";
 import {Grid, makeStyles} from "@material-ui/core";
-import {Route} from "react-router-dom";
+import {Route, Switch} from "react-router-dom";
 import Home from "./Home";
-import {Switch} from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
 	container: {
@@ -23,7 +22,7 @@ const useStyles = makeStyles(theme => ({
 	}
 }));
 
-const Body = () => {
+export default () => {
 	const classes = useStyles();
 	return (
 		<div className={classes.container}>
@@ -39,4 +38,3 @@ const Body = () => {
 		</div>
 	)
 };
-export default Body;
