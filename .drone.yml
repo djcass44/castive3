@@ -5,6 +5,7 @@ steps:
   - name: build
     image: plugins/docker
     settings:
+      registry: harbor.underlin.es
       repo: harbor.underlin.es/dcas.dev/castive3
       tags:
         - latest
