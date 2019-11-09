@@ -4,6 +4,7 @@ images:
   repository: "harbor.underlin.es/dcas.dev/castive3"
   tag: latest
   pullPolicy: Always
+  pullSecret: underlines-dcas.dev
 
 ingress:
   enabled: true
