@@ -1,0 +1,22 @@
+replicas: 1
+
+images:
+  repository: "harbor.underlin.es/dcas.dev/castive3"
+  tag: latest
+  pullPolicy: Always
+
+ingress:
+  enabled: true
+  host: castive.dev
+  # enforce HTTPS using HSTS (recommended)
+  hsts: false
+
+
+# network policy
+netsec:
+  enabled: false
+  # label to allow traffic from
+  source:
+    app: traefik
+  namespace:
+    dev.dcas.netsec/name: kube-system
