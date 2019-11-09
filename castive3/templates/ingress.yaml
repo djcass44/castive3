@@ -6,6 +6,7 @@ metadata:
   name: {{ .Chart.Name }}
   annotations:
     ingress.kubernetes.io/ssl-redirect: "true"
+    ingress.kubernetes.io/custom-response-headers: "server:"
           {{ if .Values.ingress.hsts }}
     ingress.kubernetes.io/frame-deny: "true"
     ingress.kubernetes.io/hsts-max-age: "31536000"
