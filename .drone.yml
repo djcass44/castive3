@@ -1,0 +1,19 @@
+kind: pipeline
+name: frontend
+
+steps:
+  - name: build
+    image: plugins/docker
+    settings:
+      repo: harbor.underlin.es/dcas.dev/castive3
+      tags:
+        - latest
+        - ${DRONE_BRANCH}
+      username:
+        from_secret: DOCKER_USERNAME
+      password:
+        from_secret: DOCKER_PASSWORD
+trigger:
+  when:
+    event:
+      - push

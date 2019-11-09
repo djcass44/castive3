@@ -25,12 +25,15 @@ COPY nginx/nginx.conf /etc/nginx/nginx.conf
 
 COPY --from=BUILDER /app/build /var/www/html
 
+# set permissions so that we can run without root
 RUN touch /tmp/nginx.pid && \
   chown -R nginx:nginx /tmp/nginx.pid && \
   chown -R nginx:nginx /var/cache/nginx && \
   chown -R nginx:nginx /var/www/html
 
+# drop to non-root user
 USER nginx
 
 EXPOSE 8080
+# start NGINX
 CMD ["nginx", "-g", "daemon off;"]

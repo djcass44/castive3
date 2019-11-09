@@ -1,4 +1,13 @@
-import {mdiCallMerge, mdiImageOutline, mdiLambda, mdiPackageUp, mdiPostOutline, mdiProgressWrench} from "@mdi/js";
+import {
+	mdiCallMerge,
+	mdiFileDocumentEditOutline,
+	mdiImageOutline,
+	mdiLambda,
+	mdiPackageUp,
+	mdiPostOutline,
+	mdiProgressWrench,
+	mdiSecurity
+} from "@mdi/js";
 import React from "react";
 
 export default [
@@ -6,10 +15,28 @@ export default [
 		name: "JMP",
 		description: "Application used for quickly navigating to links/urls.",
 		url: "https://jmp.castive.dev",
-		icon: "https://icon.jmp.castive.dev/icon?site=https://jmp.castive.dev",
+		icon: "https://icon.dcas.dev/icon?site=https://jmp.castive.dev",
 		fallbackIcon: mdiCallMerge,
 		source: "https://github.com/djcass44/jmp",
 		colour: "#4285F4",
+		app: true
+	},
+	{
+		name: "Wiki",
+		description: "Application for writing notes/documentation in Markdown format.",
+		url: "https://wiki.dcas.dev",
+		icon: "https://icon.dcas.dev/icon?site=https://wiki.dcas.dev",
+		fallbackIcon: mdiFileDocumentEditOutline,
+		colour: "#0F9D58",
+		app: true
+	},
+	{
+		name: "Microauth",
+		description: "Not-so-micro-service for delegated authentication.",
+		url: "https://auth.dcas.dev",
+		icon: "https://icon.dcas.dev/icon?site=https://auth.dcas.dev",
+		fallbackIcon: mdiSecurity,
+		colour: "#0F9D58",
 		app: true
 	},
 	{
@@ -18,8 +45,8 @@ export default [
 				Application for capturing &amp; serving image favicons from external websites.<br/><br/>
 				<code>docker run -p 8080:8080 djcass44/fav2:master</code>
 			</span>,
-		url: "https://icon.jmp.castive.dev",
-		icon: "https://icon.jmp.castive.dev/icon?site=https://icon.jmp.castive.dev",
+		url: "https://icon.dcas.dev",
+		icon: "https://icon.dcas.dev/icon?site=https://icon.dcas.dev",
 		fallbackIcon: mdiImageOutline,
 		source: "https://github.com/djcass44/fav2",
 		colour: "#DB4437",
@@ -31,7 +58,7 @@ export default [
 			This website! This site was built in ReactJS using a combination of ES6 JavaScript and TypeScript and used the material-ui framework.
 		</span>,
 		url: "https://castive.dev",
-		icon: "https://icon.jmp.castive.dev/icon?site=castive.dev",
+		icon: "https://icon.dcas.dev/icon?site=castive.dev",
 		fallbackIcon: mdiProgressWrench,
 		source: "https://github.com/djcass44/castive3",
 		colour: "#3F51B5",
