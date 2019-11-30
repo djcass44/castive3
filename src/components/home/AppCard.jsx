@@ -12,14 +12,20 @@ const useStyles = makeStyles(() => ({
 		borderRadius: 12,
 		margin: 16
 	},
+	button: {
+		fontFamily: "Manrope",
+		fontWeight: "bold"
+	},
 	title: {
-		margin: 4
+		margin: 4,
+		fontFamily: "Manrope",
+		fontWeight: 500
 	},
 	avatar: {
-		backgroundColor: 'transparent',
+		backgroundColor: "transparent",
 		width: 96,
 		height: 96,
-		float: 'left',
+		float: "left",
 		margin: 16
 	}
 }));
@@ -32,14 +38,14 @@ const AppCard = ({name, description, url, icon, fallbackIcon, source, colour}) =
 	return (
 		<Card className={classes.card}>
 			<CardContent>
-				<Avatar component={'div'} className={classes.avatar}>
+				<Avatar component="div" className={classes.avatar}>
 					<ReactImageFallback style={{borderRadius: 64}} src={icon} fallbackImage={
-						<Icon path={fallbackIcon} color={colour} size={'3.5rem'}/>
+						<Icon path={fallbackIcon} color={colour} size='3.5rem'/>
 					} initialImage={
-						<Icon path={fallbackIcon} color={colour} size={'3.5rem'}/>
+						<Icon path={fallbackIcon} color={colour} size='3.5rem'/>
 					}/>
 				</Avatar>
-				<Typography variant={"h5"} className={classes.title} style={{color: actualColour}}>
+				<Typography variant="h5" className={classes.title} style={{color: actualColour}}>
 					{name}
 				</Typography>
 				<Typography>
@@ -47,8 +53,9 @@ const AppCard = ({name, description, url, icon, fallbackIcon, source, colour}) =
 				</Typography>
 			</CardContent>
 			<CardActions>
-				{url != null && <Button href={url} style={{color: actualColour}}>Open</Button>}
-				{source != null && <Tooltip title={"View source"}>
+				{url != null &&
+				<Button className={classes.button} href={url} style={{color: actualColour}}>Open</Button>}
+				{source != null && <Tooltip title="View source">
 					<IconButton centerRipple={false} href={source}>
 						<Icon path={mdiSourcePull} size={1} color={actualColour}/>
 					</IconButton>

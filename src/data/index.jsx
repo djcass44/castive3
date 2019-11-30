@@ -27,7 +27,7 @@ export default [
 				Application for capturing &amp; serving image favicons from external websites.<br/><br/>
 				<code>docker run -p 8080:8080 djcass44/fav2:master</code>
 			</span>,
-		url: "https://icon.dcas.dev",
+		url: "https://icon.dcas.dev/swagger-ui.html",
 		icon: "https://icon.dcas.dev/icon?site=https://icon.dcas.dev",
 		fallbackIcon: mdiImageOutline,
 		source: "https://github.com/djcass44/fav2",
@@ -68,7 +68,7 @@ export default [
 		name: "Log2",
 		description: <span>
 				Kotlin library for simple logging. It allows for you to reduce the setup required for logging. <br/>(Should be on Maven Central soon!)<br/><br/>
-				<code>implementation("com.github.djcass44:log2:3.4")</code>
+				<code>implementation("com.github.djcass44:log2:4.0")</code>
 			</span>,
 		fallbackIcon: mdiPostOutline,
 		source: "https://github.com/djcass44/log2",
@@ -86,7 +86,7 @@ export default [
 	{
 		name: "drone-helm-s3",
 		description: <span>
-				A simple Drone CI plugin to package a Helm chart and push it to S3
+				A simple Drone CI plugin to package a Helm chart and push it to an S3 helm registry
 			</span>,
 		fallbackIcon: mdiPackageUp,
 		source: "https://github.com/djcass44/drone-helm-s3",

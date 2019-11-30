@@ -1,5 +1,4 @@
 import React, {useState} from "react";
-import AppCard from "../components/home/AppCard";
 import "typeface-roboto";
 import {Collapse, IconButton, Link, ListSubheader, makeStyles, Tooltip, Typography, useTheme} from "@material-ui/core";
 import {mdiChevronDown, mdiChevronRight} from "@mdi/js";
@@ -9,11 +8,15 @@ import {Theme} from "../palette";
 import HdrWeak from "@material-ui/icons/HdrWeak";
 import HdrStrong from "@material-ui/icons/HdrStrong";
 import getThemeMode, {LS_DARK} from "../data/getThemeMode";
+import AppCard from "../components/home/AppCard";
 
 const useStyles = makeStyles(theme => ({
 	title: {
-		textAlign: 'center',
-		color: theme.palette.primary.main
+		textAlign: "center",
+		color: theme.palette.primary.main,
+		fontFamily: "Manrope",
+		fontWeight: 500,
+		padding: theme.spacing(2)
 	},
 	credit: {
 		textAlign: 'center',
@@ -33,43 +36,6 @@ export default () => {
 		setDark(!dark);
 		window.location.reload();
 	};
-
-	const cards = new Array<AppCard>();
-	data.forEach(i => {
-		if (i.app) {
-			cards.push(
-				<AppCard
-					key={i.name}
-					id={i.name}
-					name={i.name}
-					description={i.description}
-					url={i.url}
-					icon={i.icon}
-					fallbackIcon={i.fallbackIcon}
-					source={i.source}
-					colour={i.colour}
-				/>
-			);
-		}
-	});
-	const experiments = new Array<AppCard>();
-	data.forEach(i => {
-		if (i.app == null || !i.app) {
-			experiments.push(
-				<AppCard
-					key={i.name}
-					id={i.name}
-					name={i.name}
-					description={i.description}
-					url={i.url}
-					icon={i.icon}
-					fallbackIcon={i.fallbackIcon}
-					source={i.source}
-					colour={i.colour}
-				/>
-			);
-		}
-	});
 
 	const [showApps, setShowApps] = useState(true);
 	const [showOther, setShowOther] = useState(true);
@@ -95,7 +61,23 @@ export default () => {
 				</IconButton>
 			</ListSubheader>
 			<Collapse in={showApps}>
-				{cards}
+				{data.map(i => {
+					if (!i.app)
+						return null;
+					return (
+						<AppCard
+							key={i.name}
+							id={i.name}
+							name={i.name}
+							description={i.description}
+							url={i.url}
+							icon={i.icon}
+							fallbackIcon={i.fallbackIcon}
+							source={i.source}
+							colour={i.colour}
+						/>
+					);
+				})}
 			</Collapse>
 			<ListSubheader inset>
 				Libraries &amp; experiments
@@ -105,7 +87,22 @@ export default () => {
 				</IconButton>
 			</ListSubheader>
 			<Collapse in={showOther}>
-				{experiments}
+				{data.map(i => {
+					if (i.app) return null;
+					return (
+						<AppCard
+							key={i.name}
+							id={i.name}
+							name={i.name}
+							description={i.description}
+							url={i.url}
+							icon={i.icon}
+							fallbackIcon={i.fallbackIcon}
+							source={i.source}
+							colour={i.colour}
+						/>
+					);
+				})}
 			</Collapse>
 			<div className={classes.credit}>
 				<Link href="https://github.com/djcass44/castive3">View source</Link>
