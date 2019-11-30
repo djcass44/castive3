@@ -22,6 +22,19 @@ export default [
 		app: true
 	},
 	{
+		name: "Fav2",
+		description: <span>
+				Application for capturing &amp; serving image favicons from external websites.<br/><br/>
+				<code>docker run -p 8080:8080 djcass44/fav2:master</code>
+			</span>,
+		url: "https://icon.dcas.dev",
+		icon: "https://icon.dcas.dev/icon?site=https://icon.dcas.dev",
+		fallbackIcon: mdiImageOutline,
+		source: "https://github.com/djcass44/fav2",
+		colour: "#DB4437",
+		app: true
+	},
+	{
 		name: "Wiki",
 		description: "Application for writing notes/documentation in Markdown format.",
 		url: "https://wiki.dcas.dev",
@@ -40,22 +53,9 @@ export default [
 		app: true
 	},
 	{
-		name: "Fav2",
+		name: "dcas.dev",
 		description: <span>
-				Application for capturing &amp; serving image favicons from external websites.<br/><br/>
-				<code>docker run -p 8080:8080 djcass44/fav2:master</code>
-			</span>,
-		url: "https://icon.dcas.dev",
-		icon: "https://icon.dcas.dev/icon?site=https://icon.dcas.dev",
-		fallbackIcon: mdiImageOutline,
-		source: "https://github.com/djcass44/fav2",
-		colour: "#DB4437",
-		app: true
-	},
-	{
-		name: "Castive",
-		description: <span>
-			This website! This site was built in ReactJS using a combination of ES6 JavaScript and TypeScript and used the material-ui framework.
+			This website! This site was built in ReactJS using a combination of ES6 JavaScript, TypeScript and the material-ui framework.
 		</span>,
 		url: "https://castive.dev",
 		icon: "https://icon.dcas.dev/icon?site=castive.dev",

@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import AppCard from "../components/home/AppCard";
 import "typeface-roboto";
-import {Collapse, IconButton, Link, ListSubheader, makeStyles, Typography, useTheme} from "@material-ui/core";
+import {Collapse, IconButton, Link, ListSubheader, makeStyles, Tooltip, Typography, useTheme} from "@material-ui/core";
 import {mdiChevronDown, mdiChevronRight} from "@mdi/js";
 import Icon from "@mdi/react";
 import data from "../data";
@@ -77,13 +77,15 @@ export default () => {
 	return (
 		<div>
 			<Typography className={classes.title} variant="h2">
-				Castive dot Dev
+				Django Cass
 			</Typography>
 			<Typography color="secondary" className={classes.credit}>
-				Django Cass © 2019&nbsp;&bull;&nbsp;
-				<IconButton size="small" centerRipple={false} onClick={() => toggleTheme()}>
-					{dark ? <HdrStrong/> : <HdrWeak/>}
-				</IconButton>
+				<Link href="mailto:django@dcas.dev">Contact me</Link>&nbsp;&bull;&nbsp;
+				<Tooltip title="Toggle theme">
+					<IconButton size="small" centerRipple={false} onClick={() => toggleTheme()}>
+						{dark ? <HdrStrong/> : <HdrWeak/>}
+					</IconButton>
+				</Tooltip>
 			</Typography>
 			<ListSubheader inset>
 				Apps

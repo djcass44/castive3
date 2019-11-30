@@ -1,6 +1,6 @@
 apiVersion: v1
 appVersion: "1.0"
-description: Kubernetes Helm chart for castive.dev/dcas.dev
+description: Kubernetes Helm chart for dcas.dev
 name: castive3
 version: 0.1.2
-icon: https://castive.dev/favicon.png
+icon: https://dcas.dev/favicon.png
