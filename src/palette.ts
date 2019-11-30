@@ -29,13 +29,13 @@ export interface Palette {
 export const light = {
 	primary: {
 		main: "#4285F4",
-		light: "#DEEBFF",
-		dark: "#0052CC"
+		light: "#80b4ff",
+		dark: "#0059c1"
 	},
 	secondary: {
 		main: "#172B4d",
-		light: "#455570",
-		dark: "#101e35"
+		light: "#445379",
+		dark: "#000025"
 	},
 	warning: {
 		main: "#F4B400",
@@ -60,6 +60,12 @@ export const light = {
 	background: {
 		paper: "#FFFFFF",
 		default: "#FAFAFA"
+	},
+	text: {
+		primary: "rgba(0, 0, 0, 0.87)",
+		secondary: "rgba(0, 0, 0, 0.67)",
+		disabled: "rgba(0, 0, 0, 0.38)",
+		hint: "rgba(0, 0, 0, 0.38)"
 	},
 	type: "light"
 };

@@ -8,19 +8,22 @@ ENV DISABLE_OPENCOLLECTIVE=true
 WORKDIR /app
 
 COPY package*.json ./
-RUN npm install --quiet
+RUN npm install --quiet > /dev/null
 
 COPY ./public ./public
 COPY ./src ./src
 COPY ./tsconfig.json .
 
-RUN npm run build
+RUN npm run build > /dev/null
 
 # STAGE 2 - RUN
 FROM nginx:stable-alpine
 LABEL maintainer="Django Cass <dj.cass44@gmail.com>"
 
 RUN mkdir -p /var/log/nginx && mkdir -p /var/www/html
+
+RUN apk upgrade --no-cache -q
+
 COPY nginx/nginx.conf /etc/nginx/nginx.conf
 
 COPY --from=BUILDER /app/build /var/www/html

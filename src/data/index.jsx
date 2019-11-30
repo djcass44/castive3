@@ -25,13 +25,12 @@ export default [
 		name: "Fav2",
 		description: <span>
 				Application for capturing &amp; serving image favicons from external websites.<br/><br/>
-				<code>docker run -p 8080:8080 djcass44/fav2:master</code>
 			</span>,
 		url: "https://icon.dcas.dev/swagger-ui.html",
-		icon: "https://icon.dcas.dev/icon?site=https://icon.dcas.dev",
+		icon: "https://icon.dcas.dev/icon?site=https://spring.io",
 		fallbackIcon: mdiImageOutline,
 		source: "https://github.com/djcass44/fav2",
-		colour: "#DB4437",
+		colour: "#0F9D58",
 		app: true
 	},
 	{
@@ -40,7 +39,7 @@ export default [
 		url: "https://wiki.dcas.dev",
 		icon: "https://icon.dcas.dev/icon?site=https://wiki.dcas.dev",
 		fallbackIcon: mdiFileDocumentEditOutline,
-		colour: "#0F9D58",
+		colour: "#4285F4",
 		app: true
 	},
 	{
@@ -55,7 +54,7 @@ export default [
 	{
 		name: "dcas.dev",
 		description: <span>
-			This website! This site was built in ReactJS using a combination of ES6 JavaScript, TypeScript and the material-ui framework.
+			This website!
 		</span>,
 		url: "https://castive.dev",
 		icon: "https://icon.dcas.dev/icon?site=castive.dev",
@@ -67,15 +66,14 @@ export default [
 	{
 		name: "Log2",
 		description: <span>
-				Kotlin library for simple logging. It allows for you to reduce the setup required for logging. <br/>(Should be on Maven Central soon!)<br/><br/>
-				<code>implementation("com.github.djcass44:log2:4.0")</code>
+				Kotlin library for simple logging. It allows for you to reduce the setup required for logging.
 			</span>,
 		fallbackIcon: mdiPostOutline,
 		source: "https://github.com/djcass44/log2",
-		colour: "#F4B400"
+		colour: "#FF8B00"
 	},
 	{
-		name: "aws-lambda-shellstart",
+		name: "shellstart",
 		description: <span>
 				AWS Lambda used for updating image(s) within a remote docker-compose deployment.
 			</span>,

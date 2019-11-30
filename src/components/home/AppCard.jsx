@@ -1,20 +1,22 @@
-import {Button, Card, CardActions, CardContent, IconButton, makeStyles, Tooltip, Typography} from "@material-ui/core";
+import {Button, CardActions, CardContent, IconButton, makeStyles, Tooltip, Typography} from "@material-ui/core";
 import React from "react";
 import Icon from "@mdi/react";
 import {mdiSourcePull} from "@mdi/js";
-import Avatar from "@material-ui/core/Avatar";
 import {usePalette} from "react-palette";
 import ReactImageFallback from "react-image-fallback";
 import PropTypes from "prop-types";
+import Center from "react-center";
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(theme => ({
 	card: {
 		borderRadius: 12,
-		margin: 16
+		margin: theme.spacing(1),
+		minHeight: 250
 	},
 	button: {
 		fontFamily: "Manrope",
-		fontWeight: "bold"
+		fontWeight: "bold",
+		textTransform: "none"
 	},
 	title: {
 		margin: 4,
@@ -22,11 +24,8 @@ const useStyles = makeStyles(() => ({
 		fontWeight: 500
 	},
 	avatar: {
-		backgroundColor: "transparent",
-		width: 96,
-		height: 96,
-		float: "left",
-		margin: 16
+		height: 48,
+		padding: theme.spacing(1)
 	}
 }));
 
@@ -36,32 +35,35 @@ const AppCard = ({name, description, url, icon, fallbackIcon, source, colour}) =
 
 	const classes = useStyles();
 	return (
-		<Card className={classes.card}>
+		<div className={classes.card}>
+			<Center>
+				<ReactImageFallback className={classes.avatar} src={icon} fallbackImage={
+					<Icon path={fallbackIcon} color={colour} size='3.5rem'/>
+				} initialImage={
+					<Icon path={fallbackIcon} color={colour} size='3.5rem'/>
+				}/>
+			</Center>
 			<CardContent>
-				<Avatar component="div" className={classes.avatar}>
-					<ReactImageFallback style={{borderRadius: 64}} src={icon} fallbackImage={
-						<Icon path={fallbackIcon} color={colour} size='3.5rem'/>
-					} initialImage={
-						<Icon path={fallbackIcon} color={colour} size='3.5rem'/>
-					}/>
-				</Avatar>
-				<Typography variant="h5" className={classes.title} style={{color: actualColour}}>
+				<Typography variant="h5" align="center" className={classes.title} style={{color: actualColour}}>
 					{name}
 				</Typography>
-				<Typography>
+				<Typography align="center" color="textSecondary">
 					{description}
 				</Typography>
 			</CardContent>
-			<CardActions>
-				{url != null &&
-				<Button className={classes.button} href={url} style={{color: actualColour}}>Open</Button>}
-				{source != null && <Tooltip title="View source">
-					<IconButton centerRipple={false} href={source}>
-						<Icon path={mdiSourcePull} size={1} color={actualColour}/>
-					</IconButton>
-				</Tooltip>}
-			</CardActions>
-		</Card>
+			<Center>
+				<CardActions>
+					{url != null && <Button className={classes.button} href={url} style={{color: actualColour}}>
+						Open
+					</Button>}
+					{source != null && <Tooltip title="View source">
+						<IconButton centerRipple={false} href={source}>
+							<Icon path={mdiSourcePull} size={1} color={actualColour}/>
+						</IconButton>
+					</Tooltip>}
+				</CardActions>
+			</Center>
+		</div>
 	)
 };
 AppCard.propTypes = {
