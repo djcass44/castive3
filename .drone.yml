@@ -33,6 +33,12 @@ steps:
         - ${DRONE_BRANCH/\//-}
       authjson_docker:
         from_secret: DOCKER_AUTH
+    # LINT HELM CHART
+  - name: helm_lint
+    image: harbor.v2.dcas.dev/djcass44/drone-helm3
+    settings:
+      mode: lint
+      chart: ./castive3
   # DEPLOY TO PROD
   - name: deploy_production
     image: harbor.v2.dcas.dev/djcass44/drone-helm3
