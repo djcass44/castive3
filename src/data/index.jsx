@@ -56,7 +56,7 @@ export default [
 			This website!
 		</span>,
 		url: "https://dcas.dev",
-		icon: "castive.dev",
+		icon: "dcas.dev",
 		fallbackIcon: mdiProgressWrench,
 		source: "https://github.com/djcass44/castive3",
 		colour: "#3F51B5",
