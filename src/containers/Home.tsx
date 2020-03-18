@@ -1,13 +1,13 @@
 import React, {useState} from "react";
 import "typeface-roboto";
-import {Grid, IconButton, Link, makeStyles, Tooltip, Typography} from "@material-ui/core";
+import {Grid, IconButton, Link, makeStyles, Theme, Tooltip, Typography} from "@material-ui/core";
 import data from "../data";
 import HdrWeak from "@material-ui/icons/HdrWeak";
 import HdrStrong from "@material-ui/icons/HdrStrong";
 import getThemeMode, {LS_DARK} from "../data/getThemeMode";
 import AppCard from "../components/home/AppCard";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme: Theme) => ({
 	title: {
 		textAlign: "center",
 		color: theme.palette.primary.main,
@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme => ({
 	}
 }));
 
-export default () => {
+const Home: React.FC = () => {
 	// hooks
 	const classes = useStyles();
 
@@ -62,7 +62,7 @@ export default () => {
 								name={i.name}
 								description={i.description}
 								url={i.url}
-								icon={i.icon}
+								icon={i.icon && `https://icon.v2.dcas.dev/icon?site=${i.icon}`}
 								fallbackIcon={i.fallbackIcon}
 								source={i.source}
 								colour={i.colour}
@@ -77,3 +77,4 @@ export default () => {
 		</div>
 	)
 };
+export default Home;

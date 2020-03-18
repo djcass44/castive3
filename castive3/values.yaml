@@ -1,10 +1,10 @@
 replicas: 1
 
 images:
-  repository: "harbor.underlin.es/dcas.dev/castive3"
+  repository: "harbor.v2.dcas.dev/dcas.dev/castive3"
   tag: latest
   pullPolicy: Always
-  pullSecret: underlines-dcas.dev
+  pullSecret: v2-dcas.dev
 
 ingress:
   enabled: true

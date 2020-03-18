@@ -1,9 +1,9 @@
 import React from "react";
-import {Grid, makeStyles} from "@material-ui/core";
+import {Grid, makeStyles, Theme} from "@material-ui/core";
 import {Route, Switch} from "react-router-dom";
 import Home from "./Home";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme: Theme) => ({
 	root: {
 		backgroundColor: theme.palette.background.default,
 		height: "100%",
@@ -27,7 +27,7 @@ const useStyles = makeStyles(theme => ({
 	}
 }));
 
-export default () => {
+const Body: React.FC = () => {
 	const classes = useStyles();
 	return (
 		<div className={classes.root}>
@@ -45,3 +45,4 @@ export default () => {
 		</div>
 	)
 };
+export default Body;

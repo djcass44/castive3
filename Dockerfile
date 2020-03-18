@@ -1,6 +1,6 @@
 # STAGE 1 - BUILD
-FROM node:lts-alpine as BUILDER
-LABEL maintainer="Django Cass <dj.cass44@gmail.com>"
+FROM node:lts-alpine
+LABEL maintainer="Django Cass <django@dcas.dev>"
 
 # disable spammy donation messages
 ENV DISABLE_OPENCOLLECTIVE=true
@@ -8,7 +8,7 @@ ENV DISABLE_OPENCOLLECTIVE=true
 WORKDIR /app
 
 COPY package*.json ./
-RUN npm install --quiet > /dev/null
+RUN npm ci
 
 COPY ./public ./public
 COPY ./src ./src
@@ -18,21 +18,23 @@ RUN npm run build > /dev/null
 
 # STAGE 2 - RUN
 FROM nginx:stable-alpine
-LABEL maintainer="Django Cass <dj.cass44@gmail.com>"
+LABEL maintainer="Django Cass <django@dcas.dev>"
 
-RUN mkdir -p /var/log/nginx && mkdir -p /var/www/html
+RUN mkdir -p /var/log/nginx && \
+    mkdir -p /var/www/html
 
+# update packages
 RUN apk upgrade --no-cache -q
 
 COPY nginx/nginx.conf /etc/nginx/nginx.conf
 
-COPY --from=BUILDER /app/build /var/www/html
+COPY --from=0 /app/build /var/www/html
 
 # set permissions so that we can run without root
 RUN touch /tmp/nginx.pid && \
-  chown -R nginx:nginx /tmp/nginx.pid && \
-  chown -R nginx:nginx /var/cache/nginx && \
-  chown -R nginx:nginx /var/www/html
+	chown -R nginx:nginx /tmp/nginx.pid && \
+	chown -R nginx:nginx /var/cache/nginx && \
+	chown -R nginx:nginx /var/www/html
 
 # drop to non-root user
 USER nginx

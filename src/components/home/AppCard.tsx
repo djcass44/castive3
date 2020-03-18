@@ -1,13 +1,12 @@
-import {Button, CardActions, CardContent, IconButton, makeStyles, Tooltip, Typography} from "@material-ui/core";
-import React from "react";
+import {Button, CardActions, CardContent, IconButton, makeStyles, Theme, Tooltip, Typography} from "@material-ui/core";
+import React, {ReactNode} from "react";
 import Icon from "@mdi/react";
 import {mdiSourcePull} from "@mdi/js";
 import {usePalette} from "react-palette";
 import ReactImageFallback from "react-image-fallback";
-import PropTypes from "prop-types";
 import Center from "react-center";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme: Theme) => ({
 	card: {
 		borderRadius: 12,
 		margin: theme.spacing(1),
@@ -29,15 +28,26 @@ const useStyles = makeStyles(theme => ({
 	}
 }));
 
-const AppCard = ({name, description, url, icon, fallbackIcon, source, colour}) => {
-	const {data, loading, error} = usePalette(icon);
-	const actualColour = loading === false && error == null ? data.vibrant : colour;
+interface AppCardProps {
+	id: string;
+	name: string;
+	description: ReactNode;
+	url?: string;
+	icon?: string;
+	fallbackIcon: string;
+	source?: string;
+	colour: string;
+}
+
+const AppCard: React.FC<AppCardProps> = ({name, description, url, icon, fallbackIcon, source, colour}) => {
+	const {data, loading, error} = usePalette(icon || "");
+	const actualColour = !loading && error == null ? data.vibrant : colour;
 
 	const classes = useStyles();
 	return (
 		<div className={classes.card}>
 			<Center>
-				<ReactImageFallback className={classes.avatar} src={icon} fallbackImage={
+				<ReactImageFallback className={classes.avatar} src={icon || ""} fallbackImage={
 					<Icon path={fallbackIcon} color={colour} size='3.5rem'/>
 				} initialImage={
 					<Icon path={fallbackIcon} color={colour} size='3.5rem'/>
@@ -65,20 +75,5 @@ const AppCard = ({name, description, url, icon, fallbackIcon, source, colour}) =
 			</Center>
 		</div>
 	)
-};
-AppCard.propTypes = {
-	id: PropTypes.string.isRequired,
-	name: PropTypes.string.isRequired,
-	description: PropTypes.node.isRequired,
-	url: PropTypes.string,
-	icon: PropTypes.string,
-	fallbackIcon: PropTypes.node.isRequired,
-	source: PropTypes.string,
-	colour: PropTypes.string.isRequired
-};
-AppCard.defaultProps = {
-	url: null,
-	icon: "",
-	source: ""
 };
 export default AppCard;

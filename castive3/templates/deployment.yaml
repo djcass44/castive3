@@ -33,10 +33,10 @@ spec:
       volumes:
         - name: tmp
           emptyDir: {}
-            {{ if .Values.images.pullSecret }}
+      {{ if .Values.images.pullSecret }}
       imagePullSecrets:
         - name: {{ .Values.images.pullSecret }}
-            {{ end }}
+      {{ end }}
       containers:
         - image: "{{ .Values.images.repository }}:{{ .Values.images.tag }}"
           imagePullPolicy: {{ .Values.images.pullPolicy }}
