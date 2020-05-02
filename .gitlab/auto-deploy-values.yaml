@@ -1,6 +1,6 @@
 deploymentApiVersion: apps/v1
 podAnnotations:
-  k8s-name: dcas-dev
+  k8s-app: dcas-dev
 service:
   externalPort: 8080
   internalPort: 8080
