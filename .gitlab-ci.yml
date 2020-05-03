@@ -4,7 +4,7 @@ variables:
   AUTO_DEVOPS_CHART_REPOSITORY_NAME: harbor-library
   AUTO_DEVOPS_POSTGRES_CHANNEL: '2'
   CODE_QUALITY_DISABLED: 'true'
-  PERFORMANCE_DISABLED: 'true'
+  PERFORMANCE_DISABLED: 'false'
   TEST_DISABLED: 'true'
   POSTGRES_ENABLED: 'false'
   POSTGRES_VERSION: '12.2'
@@ -13,4 +13,5 @@ variables:
 include:
   - template: Auto-DevOps.gitlab-ci.yml
   - remote: 'https://gitlab.dcas.dev/open-source/gitlab-ci-templates/-/raw/master/test/Test.gitlab-ci.yml'
+  - remote: 'https://gitlab.dcas.dev/open-source/gitlab-ci-templates/-/raw/master/performance/Browser-Performance-Testing.gitlab-ci.yml'
   - remote: 'https://gitlab.dcas.dev/open-source/gitlab-ci-templates/-/raw/master/build/Kaniko-Build.gitlab-ci.yml'
