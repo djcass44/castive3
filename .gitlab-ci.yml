@@ -14,3 +14,4 @@ include:
   - remote: 'https://gitlab.dcas.dev/open-source/gitlab-ci-templates/-/raw/master/test/Test.gitlab-ci.yml'
   - remote: 'https://gitlab.dcas.dev/open-source/gitlab-ci-templates/-/raw/master/performance/Browser-Performance-Testing.gitlab-ci.yml'
   - remote: 'https://gitlab.dcas.dev/open-source/gitlab-ci-templates/-/raw/master/build/Kaniko-Build.gitlab-ci.yml'
+  - remove: 'https://gitlab.dcas.dev/open-source/gitlab-ci-templates/-/raw/master/deploy/Deploy.gitlab-ci.yml'
