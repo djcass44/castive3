@@ -1,0 +1,4 @@
+describe("noop", () => {
+	it("noop", () => {
+	});
+});
