@@ -16,9 +16,7 @@ service:
   externalPort: 8080
   internalPort: 8080
 ingress:
-  annotations:
-    kubernetes.io/ingress.provider: "nginx"
-    kubernetes.io/ingress.class: "gitlab-nginx"
+  className: "gitlab-nginx"
   tls:
     enabled: true
     secretName: prod-dcas-dev
